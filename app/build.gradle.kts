@@ -28,15 +28,23 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
+        freeCompilerArgs += listOf(
+            "-Xcontext-receivers",
+            "-opt-in=kotlin.RequiresOptIn"
+        )
     }
     buildFeatures {
         compose = true
     }
+    buildToolsVersion = "35.0.0"
 }
 
 dependencies {
