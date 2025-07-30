@@ -23,3 +23,4 @@ rootProject.name = "DummyApp"
 include(":app")
 include(":data")
 include(":domain")
+include(":network")
