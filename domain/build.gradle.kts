@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     alias(libs.plugins.kotlin.compose)
+    kotlin("kapt")
 }
 
 android {
@@ -19,4 +20,6 @@ android {
 
 dependencies {
     api(project(":data"))
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 }

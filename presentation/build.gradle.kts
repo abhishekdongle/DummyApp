@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     alias(libs.plugins.kotlin.compose)
+    kotlin("kapt")
 }
 
 android {
@@ -39,6 +40,8 @@ dependencies {
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.ui)
     implementation(libs.coil.compose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     implementation(project(":domain"))
 }
