@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.data"
+    namespace = "com.domain"
     compileSdk = 35
 
     defaultConfig {

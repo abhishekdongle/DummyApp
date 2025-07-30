@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.network"
+    namespace = "com.presentation"
     compileSdk = 35
 
     defaultConfig {
