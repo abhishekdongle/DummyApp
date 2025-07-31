@@ -20,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.data.models.Product
+import com.domain.models.Product
 
 @Composable
 fun ProductItem(product: Product) {

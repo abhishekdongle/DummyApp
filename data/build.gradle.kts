@@ -11,4 +11,7 @@ android {
 dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(projects.network)
+    implementation(projects.domain)
 }
