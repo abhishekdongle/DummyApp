@@ -1,21 +1,26 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt.android)
-    kotlin("kapt")
+    alias(libs.plugins.dummyApp.application)
+    alias(libs.plugins.dummyApp.compose)
+    alias(libs.plugins.dummyApp.hilt)
+    alias(libs.plugins.devtools.ksp)
 }
 
+val applicationName: String = libs.versions.applicationName.get()
+val appId: String = libs.versions.applicationId.get()
+val appVersion: String = libs.versions.versionName.get()
+val compileSdk: String = libs.versions.compileSdk.get()
+val versionCodeValue: Int = libs.versions.versionCode.get().toInt()
+
 android {
-    namespace = "com.dummyapp"
-    compileSdk = 35
+    namespace = appId
+    compileSdk = compileSdk
 
     defaultConfig {
-        applicationId = "com.dummyapp"
-        minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = appId
+        minSdk = minSdk
+        targetSdk = targetSdk
+        versionCode = versionCode
+        versionName = versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,20 +38,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-        freeCompilerArgs += listOf(
-            "-Xcontext-receivers",
-            "-opt-in=kotlin.RequiresOptIn"
-        )
-    }
     buildFeatures {
         compose = true
     }
-    buildToolsVersion = "35.0.0"
 }
 
 dependencies {
@@ -59,21 +53,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
-    implementation(libs.androidx.compose.runtime)
-
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":network"))
-    implementation(project(":presentation"))
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 }
