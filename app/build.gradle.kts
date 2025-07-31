@@ -62,6 +62,8 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
+    implementation(libs.androidx.compose.runtime)
+
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":network"))

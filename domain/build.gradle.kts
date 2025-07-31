@@ -12,6 +12,14 @@ android {
     defaultConfig {
         minSdk = 24
     }
+
+    kotlinOptions {
+        jvmTarget = "17"
+        freeCompilerArgs += listOf(
+            "-Xcontext-receivers",
+            "-opt-in=kotlin.RequiresOptIn"
+        )
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -22,4 +30,6 @@ dependencies {
     api(project(":data"))
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.runtime)
 }
