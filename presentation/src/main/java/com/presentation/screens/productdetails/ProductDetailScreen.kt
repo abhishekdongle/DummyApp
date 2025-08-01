@@ -1,5 +1,6 @@
 package com.presentation.screens.productdetails
 
+import ImageCarousel
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -12,7 +13,6 @@ import com.domain.product.models.Product
 import com.domain.product.models.ProductDetails
 import com.presentation.components.ErrorView
 import com.presentation.components.HeaderComponent
-import com.presentation.components.ImageCarousel
 import com.presentation.components.LoadingView
 import com.presentation.states.ProductDetailsUiState
 
@@ -43,64 +43,6 @@ fun ProductDetailScreen(
     }
     productDetailViewModel.onAction(product?.id)
 }
-//
-//@Composable
-//private fun ProductDetailView(product: ProductDetails, thumbnail: String?) {
-//    Column(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .padding(16.dp)
-//    ) {
-//        AsyncImage(
-//            model = thumbnail,
-//            contentDescription = product.title,
-//            contentScale = ContentScale.Crop,
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .height(200.dp)
-//                .background(Color.LightGray)
-//        )
-//
-//        Spacer(modifier = Modifier.height(16.dp))
-//
-//        Text(
-//            text = product.title.orEmpty(),
-//            style = MaterialTheme.typography.headlineMedium,
-//            maxLines = 2,
-//            overflow = TextOverflow.Ellipsis
-//        )
-//
-//        Spacer(modifier = Modifier.height(8.dp))
-//
-//        Text(
-//            text = product.description.orEmpty(),
-//            style = MaterialTheme.typography.bodyLarge,
-//            maxLines = 4,
-//            overflow = TextOverflow.Ellipsis
-//        )
-//
-//        Spacer(modifier = Modifier.height(16.dp))
-//
-//        LazyRow(
-//            horizontalArrangement = Arrangement.spacedBy(8.dp),
-//            modifier = Modifier.fillMaxWidth()
-//        ) {
-//            val images = product.images
-//            images?.let {
-//                items(it) { image ->
-//                    AsyncImage(
-//                        model = image,
-//                        contentDescription = null,
-//                        contentScale = ContentScale.Crop,
-//                        modifier = Modifier
-//                            .size(100.dp)
-//                            .background(Color.LightGray)
-//                    )
-//                }
-//            }
-//        }
-//    }
-//}
 
 @Composable
 private fun ProductDetailView(product: ProductDetails, thumbnail: String?) {
