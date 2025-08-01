@@ -1,5 +1,6 @@
-package com.presentation.components
+package com.presentation.screens.productlist
 
+import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Column
@@ -20,16 +21,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.domain.models.Product
+import com.domain.product.models.Product
 
 @Composable
-fun ProductItem(product: Product) {
+fun ProductItemCard(
+    product: Product,
+    onClick: (Product) -> Unit = { _ -> }
+) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
         Row(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier
+                .padding(16.dp)
+                .clickable { onClick(product) }
         ) {
             AsyncImage(
                 model = product.thumbnail,
@@ -44,9 +50,9 @@ fun ProductItem(product: Product) {
             Spacer(modifier = Modifier.width(16.dp))
 
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = product.title, style = MaterialTheme.typography.titleMedium)
+                Text(text = product.title.orEmpty(), style = MaterialTheme.typography.titleMedium)
                 Text(
-                    text = product.description,
+                    text = product.description.orEmpty(),
                     style = MaterialTheme.typography.bodySmall,
                     maxLines = 2
                 )

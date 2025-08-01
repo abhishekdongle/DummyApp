@@ -1,6 +1,6 @@
-package com.domain.repository
+package com.domain.product.repository
 
-import com.domain.models.Product
+import com.domain.product.models.Product
 
 interface ProductRepository {
     suspend fun getAllProducts(): List<Product>

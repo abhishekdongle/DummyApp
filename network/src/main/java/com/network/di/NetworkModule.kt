@@ -1,6 +1,7 @@
 package com.network.di
 
 import com.network.api.ProductApi
+import com.network.api.ProductDetailsApi
 import com.network.ktor.KtorClientProvider
 import dagger.Module
 import dagger.Provides
@@ -20,4 +21,8 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideProductApi(client: HttpClient): ProductApi = ProductApi(client)
+
+    @Provides
+    @Singleton
+    fun provideProductDetailsApi(client: HttpClient): ProductDetailsApi = ProductDetailsApi(client)
 }

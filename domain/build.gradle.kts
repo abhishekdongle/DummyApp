@@ -2,6 +2,7 @@ plugins {
     id("kotlinx-serialization")
     alias(libs.plugins.dummyApp.android.library)
     alias(libs.plugins.dummyApp.hilt)
+    kotlin("plugin.parcelize")
 }
 
 android {
